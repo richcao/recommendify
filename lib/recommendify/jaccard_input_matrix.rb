@@ -52,7 +52,8 @@ private
   end
 
   def native_path
-    ::File.expand_path('../../../bin/recommendify', __FILE__)
+    native_client = ENV['RECOMMENDIFY_NATIVE_CLIENT']
+    ::File.expand_path(native_client.present? ? native_client : '../../../bin/recommendify', __FILE__)
   end
 
   def redis_url
